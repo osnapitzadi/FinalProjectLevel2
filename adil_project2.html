@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Adil project</title>
+
+    <!-- bootstrap dependecies -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <!-- bootstrap dependecies -->
+    <style>
+        body {
+            background-color: black;
+            color: white
+        }
+
+        .card {
+            background-color: black;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Final project OOP</h1>
+        <div class="row justify-content-around">
+            <!-- Video Device  -->
+            <div class="card border-light col-3" >
+                <div class="card-body">
+                    <h5 class="card-title">Video Device</h5>
+                    <!-- replacementCost -->
+                    <label for="replacementCost">Replacement Cost:</label>
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                          <span class="input-group-text">$</span>
+                        </div>
+                        <input type="text" class="form-control" aria-label="Amount (to the nearest dollar)" id="replacementCost1">
+                        <div class="input-group-append">
+                          <span class="input-group-text">.00</span>
+                        </div>
+                    </div>
+                    <!-- replacementCost -->
+
+                    <!-- Name -->
+                    <label for="name1">Supplier name:</label>
+                    <div class="input-group input-group-sm mb-3">
+                        <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" id="name1">
+                    </div>
+                    <!-- end Name -->
+
+                    <!-- Serial number -->
+                    <label for="serialNumber1">Serial number:</label>
+                    <div class="input-group input-group-sm mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text" id="inputGroup-sizing-sm">Nº</span>
+                        </div>
+                        <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" id="serialNumber">
+                    </div>
+                    <!-- end Serial number -->
+
+                    <!-- resolution -->
+                    <label for="resolution1">Resolution:</label>
+                    <div class="input-group">
+                        <input type="text" class="form-control" aria-label="Text input with dropdown button" id="resolution1">
+                        <div class="input-group-append">
+                        <select name="res1" id="res1">
+                            <option value="LCD">LCD</option>
+                            <option value="LED">LED</option>
+                            <option value="Plasma">Plasma</option>
+                        </select>
+                        
+                        </div>
+                    </div>
+                    <!-- end resolution -->
+
+                </div>
+                <!-- btns -->
+                <div class="card-body">
+                    <button type="button mb-3" class="btn btn-primary">Next</button>
+                    <button type="button mb-3" class="btn btn-primary">Previous</button>
+                    <button type="button mb-3" class="btn btn-info">New</button>
+                    <button type="button mb-3" class="btn btn-success">Update</button>
+                </div>
+                <!-- end btns -->
+            </div>
+            <!-- end Video Device  -->
+
+            <!-- Hard Disc -->
+            <div class="card border-light col-3" >
+                <div class="card-body">
+                    <h5 class="card-title">Hard Disc</h5>
+                    <!-- replacementCost -->
+                    <label for="replacementCost">Replacement Cost:</label>
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                          <span class="input-group-text">$</span>
+                        </div>
+                        <input type="text" class="form-control" aria-label="Amount (to the nearest dollar)" id="replacementCost">
+                        <div class="input-group-append">
+                          <span class="input-group-text">.00</span>
+                        </div>
+                    </div>
+                    <!-- replacementCost -->
+
+                    <!-- Name -->
+                    <label for="name">Supplier name:</label>
+                    <div class="input-group input-group-sm mb-3">
+                        <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" id="name">
+                    </div>
+                    <!-- end Name -->
+
+                    <!-- Serial number -->
+                    <label for="serialNumber">Serial number:</label>
+                    <div class="input-group input-group-sm mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text" id="inputGroup-sizing-sm">Nº</span>
+                        </div>
+                        <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" id="serialNumber">
+                    </div>
+                    <!-- end Serial number -->
+
+                    <!-- resolution -->
+                    <label for="resolution">Resolution:</label>
+                    <div class="input-group">
+                        <input type="text" class="form-control" aria-label="Text input with dropdown button" id="resolution">
+                        <div class="input-group-append">
+                        <select name="res" id="res">
+                            <option value="LCD">LCD</option>
+                            <option value="LED">LED</option>
+                            <option value="Plasma">Plasma</option>
+                        </select>
+                        
+                        </div>
+                    </div>
+                    <!-- end resolution -->
+
+                </div>
+                <!-- btns -->
+                <div class="card-body">
+                    <button type="button mb-3" class="btn btn-primary">Next</button>
+                    <button type="button mb-3" class="btn btn-primary">Previous</button>
+                    <button type="button mb-3" class="btn btn-info">New</button>
+                    <button type="button mb-3" class="btn btn-success">Update</button>
+                </div>
+                <!-- end btns -->
+            </div>
+            <!-- end Hard Disc -->
+
+            <!-- SSD -->
+            <div class="card border-light col-3" >
+                <div class="card-body">
+                    <h5 class="card-title">SSD</h5>
+                    <!-- replacementCost -->
+                    <label for="replacementCost">Replacement Cost:</label>
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                          <span class="input-group-text">$</span>
+                        </div>
+                        <input type="text" class="form-control" aria-label="Amount (to the nearest dollar)" id="replacementCost">
+                        <div class="input-group-append">
+                          <span class="input-group-text">.00</span>
+                        </div>
+                    </div>
+                    <!-- replacementCost -->
+
+                    <!-- Name -->
+                    <label for="name">Supplier name:</label>
+                    <div class="input-group input-group-sm mb-3">
+                        <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" id="name">
+                    </div>
+                    <!-- end Name -->
+
+                    <!-- Serial number -->
+                    <label for="serialNumber">Serial number:</label>
+                    <div class="input-group input-group-sm mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text" id="inputGroup-sizing-sm">Nº</span>
+                        </div>
+                        <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" id="serialNumber">
+                    </div>
+                    <!-- end Serial number -->
+
+                    <!-- resolution -->
+                    <label for="resolution">Resolution:</label>
+                    <div class="input-group">
+                        <input type="text" class="form-control" aria-label="Text input with dropdown button" id="resolution">
+                        <div class="input-group-append">
+                        <select name="res" id="res">
+                            <option value="LCD">LCD</option>
+                            <option value="LED">LED</option>
+                            <option value="Plasma">Plasma</option>
+                        </select>
+                        
+                        </div>
+                    </div>
+                    <!-- end resolution -->
+
+                </div>
+                <!-- btns -->
+                <div class="card-body">
+                    <button type="button mb-3" class="btn btn-primary">Next</button>
+                    <button type="button mb-3" class="btn btn-primary">Previous</button>
+                    <button type="button mb-3" class="btn btn-info">New</button>
+                    <button type="button mb-3" class="btn btn-success">Update</button>
+                </div>
+                <!-- end btns -->
+            </div>
+            <!-- end SSD -->
+        </div>
+    </div>
+
+    
+</body>
+<script>
+    // classes
+    class Device{
+        constructor(called_status, replacementCost, supplierName, serialNumber){
+            this.called_status = called_status;
+            this.replacementCost = replacementCost;
+            this.supplierName = supplierName;
+            this.serialNumber = serialNumber;
+        }
+        getStatus(){
+        return this.called_status;
+        }
+
+        enable(){
+            this.called_status = 1;
+        }
+
+        disable(){
+            this.called_status = 0;
+        }
+    }
+
+    class VideoDevice extends Device{
+        constructor(called_status, replacementCost, supplierName, serialNumber, resolution, deviceType){
+            super(called_status, replacementCost, supplierName, serialNumber);
+            this.resolution = resolution;
+            this.deviceType = deviceType;
+        }
+
+    }
+
+    class DiskDevice extends Device{
+        constructor(called_status, replacementCost, supplierName, serialNumber, size, transferRate){
+            super(called_status, replacementCost, supplierName, serialNumber);
+            this.size = size;
+            this.transferRate = transferRate;
+        }
+
+    }
+
+    class HardDisk extends DiskDevice{
+        constructor(called_status, replacementCost, supplierName, serialNumber, size, transferRate, platterSize, numOfPlatters){
+            super(called_status, replacementCost, supplierName, serialNumber, size, transferRate);
+            this.platterSize = platterSize;
+            this.numOfPlatters = numOfPlatters;
+        }
+
+    }
+
+    class SsdDisk extends DiskDevice{
+        constructor(called_status, replacementCost, supplierName, serialNumber, size, transferRate, ssdSize, wearLeveling){
+            super(called_status, replacementCost, supplierName, serialNumber, size, transferRate);
+            this.ssdSize = ssdSize;
+            this.wearLeveling = wearLeveling;
+        }
+    }
+    //end classes
+
+
+    // Global variables
+    var aVideoDevice = [];
+    var aHardDisk = [];
+    var aSsdDisk = [];
+
+
+
+
+
+</script>
+<!-- bootstrap dependecies -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+<!-- bootstrap dependecies -->
+
+</html>
