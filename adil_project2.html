@@ -53,7 +53,7 @@
                         <div class="input-group-prepend">
                             <span class="input-group-text" id="inputGroup-sizing-sm">Nº</span>
                         </div>
-                        <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" id="serialNumber">
+                        <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" id="serialNumber1">
                     </div>
                     <!-- end Serial number -->
 
@@ -63,14 +63,23 @@
                         <input type="text" class="form-control" aria-label="Text input with dropdown button" id="resolution1">
                         <div class="input-group-append">
                         <select name="res1" id="res1">
-                            <option value="LCD">LCD</option>
-                            <option value="LED">LED</option>
-                            <option value="Plasma">Plasma</option>
+                            <option value="LCD" id="lcd1">LCD</option>
+                            <option value="LED" id="led1">LED</option>
+                            <option value="Plasma" id="plasma1">Plasma</option>
                         </select>
                         
                         </div>
                     </div>
                     <!-- end resolution -->
+
+                    <!-- radio -->
+                    <form>
+                        <input type="radio" id="enabled" name="status" value="enabled">
+                        <label for="enabled">Enabled</label>
+                        <input type="radio" id="disabled" name="status" value="disabled">
+                        <label for="disabled">Disable</label>
+                    </form>
+                    <!-- end radio -->
 
                 </div>
                 <!-- btns -->
@@ -213,28 +222,28 @@
 <script>
     // classes
     class Device{
-        constructor(called_status, replacementCost, supplierName, serialNumber){
-            this.called_status = called_status;
+        constructor(replacementCost, supplierName, serialNumber, status){
             this.replacementCost = replacementCost;
             this.supplierName = supplierName;
             this.serialNumber = serialNumber;
+            this.status = status;
         }
         getStatus(){
-        return this.called_status;
+        return this.status;
         }
 
         enable(){
-            this.called_status = 1;
+            this.status = 1;
         }
 
         disable(){
-            this.called_status = 0;
+            this.status = 0;
         }
     }
 
     class VideoDevice extends Device{
-        constructor(called_status, replacementCost, supplierName, serialNumber, resolution, deviceType){
-            super(called_status, replacementCost, supplierName, serialNumber);
+        constructor(replacementCost, supplierName, serialNumber, status, resolution, deviceType){
+            super(replacementCost, supplierName, serialNumber, status);
             this.resolution = resolution;
             this.deviceType = deviceType;
         }
@@ -242,8 +251,8 @@
     }
 
     class DiskDevice extends Device{
-        constructor(called_status, replacementCost, supplierName, serialNumber, size, transferRate){
-            super(called_status, replacementCost, supplierName, serialNumber);
+        constructor(replacementCost, supplierName, serialNumber, status, size, transferRate){
+            super(replacementCost, supplierName, serialNumber, status);
             this.size = size;
             this.transferRate = transferRate;
         }
@@ -251,8 +260,8 @@
     }
 
     class HardDisk extends DiskDevice{
-        constructor(called_status, replacementCost, supplierName, serialNumber, size, transferRate, platterSize, numOfPlatters){
-            super(called_status, replacementCost, supplierName, serialNumber, size, transferRate);
+        constructor(replacementCost, supplierName, serialNumber, status,size, transferRate, platterSize, numOfPlatters){
+            super(replacementCost, supplierName, serialNumber, status, size, transferRate);
             this.platterSize = platterSize;
             this.numOfPlatters = numOfPlatters;
         }
@@ -260,8 +269,8 @@
     }
 
     class SsdDisk extends DiskDevice{
-        constructor(called_status, replacementCost, supplierName, serialNumber, size, transferRate, ssdSize, wearLeveling){
-            super(called_status, replacementCost, supplierName, serialNumber, size, transferRate);
+        constructor(replacementCost, supplierName, serialNumber, status, size, transferRate, ssdSize, wearLeveling){
+            super(replacementCost, supplierName, serialNumber, status, size, transferRate);
             this.ssdSize = ssdSize;
             this.wearLeveling = wearLeveling;
         }
@@ -270,9 +279,53 @@
 
 
     // Global variables
-    var aVideoDevice = [];
+    var aVideoDevice = [new VideoDevice(111,222,333,true,555,1)];
     var aHardDisk = [];
     var aSsdDisk = [];
+    var counterVideoDevice = 0;
+
+    // Print functions
+
+    function print1() {
+        document.getElementById("replacementCost1").value = aVideoDevice[counterVideoDevice].replacementCost;
+
+        document.getElementById("name1").value = aVideoDevice[counterVideoDevice].supplierName;
+
+        document.getElementById("serialNumber1").value = aVideoDevice[counterVideoDevice].serialNumber;
+
+        // radio validation
+        if (aVideoDevice[counterVideoDevice].status == true) {
+            document.getElementsByName("status")[0].checked = true;
+        } else {
+            document.getElementsByName("status")[1].checked = true;
+        }
+        // end radio 
+
+        document.getElementById("resolution1").value = aVideoDevice[counterVideoDevice].resolution;
+
+    
+        document.getElementById("res1").selectedIndex = aVideoDevice[counterVideoDevice].deviceType;
+    }
+
+    print1();
+
+    // "New" buttons
+
+    function btnNew1() {
+        let cost = document.getElementById("replacementCost1").value;
+        let name = document.getElementById("name1").value;
+        let num = document.getElementById("serialNumber1").value;
+        // TODO getting info from radio
+        let stat = document.getElementById("");
+        // end TODO
+        let res = document.getElementById("resolution1").value;
+        // same
+        let dev = document.getElementById("res1");
+
+        let VideoDevice = new VideoDevice(cost, name, num, stat, res, dev);
+
+        
+    }
 
 
 
