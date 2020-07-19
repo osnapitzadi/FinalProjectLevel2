@@ -27,7 +27,8 @@
             <!-- Video Device  -->
             <div class="card border-light col-sm" id="videoDevice">
                 <div class="card-body">
-                    <h5 class="card-title">Video Device</h5>
+                    <h5 class="card-title">Video Device<span class="badge badge-secondary" id="badge1"></span>
+                    </h5>
                     <!-- replacementCost -->
                     <label for="replacementCost">Replacement Cost:</label>
                     <div class="input-group mb-3">
@@ -306,6 +307,8 @@
 
     
         document.getElementById("res1").selectedIndex = aVideoDevice[counterVideoDevice].deviceType;
+
+        document.getElementById("badge1").innerHTML = counterVideoDevice +1;
     }
 
     print1();
@@ -327,12 +330,9 @@
         let dev = document.getElementById("res1").value;
 
         if (cost && name && num && res) {
-            let test = new VideoDevice("cost", "name", "num", "stat", "res", "dev");
-
             let videoDevice = new VideoDevice(cost, name, num, stat, res, dev);
 
             aVideoDevice.push(videoDevice);
-
 
             var inputs = document.querySelectorAll("div#videoDevice input");
 
@@ -342,9 +342,11 @@
             }
             vidDiv.classList.remove("border-light")
             vidDiv.classList.add("border-success");
+            document.getElementById("badge1").innerHTML = "";
         } else {
             vidDiv.classList.remove("border-light")
             vidDiv.classList.add("border-danger");
+            document.getElementById("badge1").innerHTML = "";
         }
 
 
@@ -356,6 +358,10 @@
         if(counterVideoDevice < aVideoDevice.length -1) {
             counterVideoDevice++;
             print1();
+            let vidDiv = document.getElementById("videoDevice");
+            vidDiv.classList.remove("border-danger");
+            vidDiv.classList.remove("border-success");
+            vidDiv.classList.add("border-light")
         }
     }
 
@@ -364,9 +370,17 @@
     function previousBtn() {
         if(counterVideoDevice == 0) {
             print1();
+            let vidDiv = document.getElementById("videoDevice");
+            vidDiv.classList.remove("border-danger");
+            vidDiv.classList.remove("border-success");
+            vidDiv.classList.add("border-light")
         } else if (counterVideoDevice > 0) {
             counterVideoDevice--;
             print1();
+            let vidDiv = document.getElementById("videoDevice");
+            vidDiv.classList.remove("border-danger");
+            vidDiv.classList.remove("border-success");
+            vidDiv.classList.add("border-light")
         }
     }
 
@@ -408,9 +422,11 @@
             }
             vidDiv.classList.remove("border-light")
             vidDiv.classList.add("border-success");
+            document.getElementById("badge1").innerHTML = "";
         } else {
             vidDiv.classList.remove("border-light")
             vidDiv.classList.add("border-danger");
+            document.getElementById("badge1").innerHTML = "";
         }
 
 
