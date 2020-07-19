@@ -20,11 +20,12 @@
     </style>
 </head>
 <body>
+    <input type="text" id="test">
     <div class="container">
         <h1>Final project OOP</h1>
         <div class="row justify-content-around">
             <!-- Video Device  -->
-            <div class="card border-light col-3" >
+            <div class="card border-light col-sm" id="videoDevice">
                 <div class="card-body">
                     <h5 class="card-title">Video Device</h5>
                     <!-- replacementCost -->
@@ -73,28 +74,28 @@
                     <!-- end resolution -->
 
                     <!-- radio -->
-                    <form>
+                    <div id="status1">
                         <input type="radio" id="enabled" name="status" value="enabled">
                         <label for="enabled">Enabled</label>
                         <input type="radio" id="disabled" name="status" value="disabled">
                         <label for="disabled">Disable</label>
-                    </form>
+                    </div>
                     <!-- end radio -->
 
                 </div>
                 <!-- btns -->
                 <div class="card-body">
-                    <button type="button mb-3" class="btn btn-primary">Next</button>
-                    <button type="button mb-3" class="btn btn-primary">Previous</button>
-                    <button type="button mb-3" class="btn btn-info">New</button>
-                    <button type="button mb-3" class="btn btn-success">Update</button>
+                    <button type="button mb-3" class="btn btn-primary" onclick="previousBtn();">Previous</button>
+                    <button type="button mb-3" class="btn btn-primary" onclick="btnNext1();">Next</button>
+                    <button type="button mb-3" class="btn btn-info" onclick="btnNew1()">New</button>
+                    <button type="button mb-3" class="btn btn-success" onclick="update1();">Update</button>
                 </div>
                 <!-- end btns -->
             </div>
             <!-- end Video Device  -->
 
             <!-- Hard Disc -->
-            <div class="card border-light col-3" >
+            <div class="card border-light col-sm" >
                 <div class="card-body">
                     <h5 class="card-title">Hard Disc</h5>
                     <!-- replacementCost -->
@@ -155,7 +156,7 @@
             <!-- end Hard Disc -->
 
             <!-- SSD -->
-            <div class="card border-light col-3" >
+            <div class="card border-light col-sm" >
                 <div class="card-body">
                     <h5 class="card-title">SSD</h5>
                     <!-- replacementCost -->
@@ -312,21 +313,108 @@
     // "New" buttons
 
     function btnNew1() {
+        let vidDiv = document.getElementById("videoDevice");
         let cost = document.getElementById("replacementCost1").value;
         let name = document.getElementById("name1").value;
         let num = document.getElementById("serialNumber1").value;
-        // TODO getting info from radio
-        let stat = document.getElementById("");
-        // end TODO
+        let stat = document.querySelector("input[name=status]:checked").value
+        if (stat == "enabled") {
+            stat = true;
+        } else {
+            stat = false;
+        }
         let res = document.getElementById("resolution1").value;
-        // same
-        let dev = document.getElementById("res1");
+        let dev = document.getElementById("res1").value;
 
-        let VideoDevice = new VideoDevice(cost, name, num, stat, res, dev);
+        if (cost && name && num && res) {
+            let test = new VideoDevice("cost", "name", "num", "stat", "res", "dev");
 
-        
+            let videoDevice = new VideoDevice(cost, name, num, stat, res, dev);
+
+            aVideoDevice.push(videoDevice);
+
+
+            var inputs = document.querySelectorAll("div#videoDevice input");
+
+            for (let index = 0; index < inputs.length; index++) {
+                const element = inputs[index];
+                element.value = "";
+            }
+            vidDiv.classList.remove("border-light")
+            vidDiv.classList.add("border-success");
+        } else {
+            vidDiv.classList.remove("border-light")
+            vidDiv.classList.add("border-danger");
+        }
+
+
     }
 
+    // next buttons
+
+    function btnNext1() {
+        if(counterVideoDevice < aVideoDevice.length -1) {
+            counterVideoDevice++;
+            print1();
+        }
+    }
+
+    // previous buttons 
+
+    function previousBtn() {
+        if(counterVideoDevice == 0) {
+            print1();
+        } else if (counterVideoDevice > 0) {
+            counterVideoDevice--;
+            print1();
+        }
+    }
+
+    //update buttons 
+
+    function update1() {
+        let vidDiv = document.getElementById("videoDevice");
+        let cost = document.getElementById("replacementCost1").value;
+        let name = document.getElementById("name1").value;
+        let num = document.getElementById("serialNumber1").value;
+        let stat = document.querySelector("input[name=status]:checked").value
+        if (stat == "enabled") {
+            stat = true;
+        } else {
+            stat = false;
+        }
+        let res = document.getElementById("resolution1").value;
+        let dev = document.getElementById("res1").value;
+
+        if (cost && name && num && res) {
+
+            var el = aVideoDevice[counterVideoDevice];
+            el.replacementCost = cost;
+            el.supplierName = name;
+            el.serialNumber = num;
+            el.resolution = res;
+            el.deviceType = dev;
+            if (stat == "enabled") {
+                el.status = true;
+            } else {
+                el.status = false;
+            }
+            
+            var inputs = document.querySelectorAll("div#videoDevice input");
+
+            for (let index = 0; index < inputs.length; index++) {
+                const element = inputs[index];
+                element.value = "";
+            }
+            vidDiv.classList.remove("border-light")
+            vidDiv.classList.add("border-success");
+        } else {
+            vidDiv.classList.remove("border-light")
+            vidDiv.classList.add("border-danger");
+        }
+
+
+    }
 
 
 
