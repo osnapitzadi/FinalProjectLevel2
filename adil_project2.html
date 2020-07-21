@@ -94,7 +94,7 @@
             <!-- Hard Disc -->
             <div class="card border-light col-sm m-3" id="hardDisk">
                 <div class="card-body">
-                    <h5 class="card-title">Video Device<span class="badge badge-secondary" id="badge2"></span>
+                    <h5 class="card-title">Hard Disc<span class="badge badge-secondary" id="badge2"></span>
                     </h5>
                     <!-- replacementCost -->
                     <label for="replacementCost2">Replacement Cost:</label>
@@ -123,12 +123,12 @@
                     </div>
                     <!-- end Serial number -->
 
-                    <!-- resolution -->
+                    <!-- size -->
                     <label for="size">Size:</label>
                     <div class="input-group input-group-sm mb-3">
                         <input type="text" class="form-control" aria-label="Text input with dropdown button" id="size">
                     </div>
-                    <!-- end resolution -->
+                    <!-- end size -->
 
                     <!-- Transfer Rate: -->
                     <label for="rate">Transfer Rate:</label>
@@ -153,9 +153,9 @@
 
                     <!-- radio -->
                     <div id="status1" class="m-3">
-                        <input type="radio" id="enabled" name="status" value="enabled">
+                        <input type="radio" id="enabled" name="status1" value="enabled">
                         <label for="enabled">Enabled</label>
-                        <input type="radio" id="disabled" name="status" value="disabled">
+                        <input type="radio" id="disabled" name="status1" value="disabled">
                         <label for="disabled">Disable</label>
                     </div>
                     <!-- end radio -->
@@ -163,10 +163,10 @@
                 </div>
                 <!-- btns -->
                 <div class="card-body">
-                    <button type="button mb-3" class="btn btn-primary" onclick="previousBtn();">Previous</button>
-                    <button type="button mb-3" class="btn btn-primary" onclick="btnNext1();">Next</button>
-                    <button type="button mb-3" class="btn btn-info" onclick="btnNew1()">New</button>
-                    <button type="button mb-3" class="btn btn-success" onclick="update1();">Update</button>
+                    <button type="button mb-3" class="btn btn-primary" onclick="previousBtn2();">Previous</button>
+                    <button type="button mb-3" class="btn btn-primary" onclick="btnNext2();">Next</button>
+                    <button type="button mb-3" class="btn btn-info" onclick="btnNew2()">New</button>
+                    <button type="button mb-3" class="btn btn-success" onclick="update2();">Update</button>
                 </div>
                 <!-- end btns -->
             </div>
@@ -298,9 +298,10 @@
 
     // Global variables
     var aVideoDevice = [new VideoDevice(111,222,333,true,555,1)];
-    var aHardDisk = [];
+    var aHardDisk = [new HardDisk(111,222,333,true,555,666,777,888,999)];
     var aSsdDisk = [];
     var counterVideoDevice = 0;
+    var counterHardDisc = 0;
 
     // Print functions
 
@@ -327,8 +328,32 @@
         // badge changing
         document.getElementById("badge1").innerHTML = counterVideoDevice +1;
     }
-
     print1();
+
+    function print2() {
+        document.getElementById("replacementCost2").value = aHardDisk[counterHardDisc].replacementCost;
+
+        document.getElementById("name2").value = aHardDisk[counterHardDisc].supplierName;
+
+        document.getElementById("serialNumber2").value = aHardDisk[counterHardDisc].serialNumber;
+
+        document.getElementById("size").value = aHardDisk[counterHardDisc].size;
+
+        document.getElementById("rate").value = aHardDisk[counterHardDisc].transferRate;
+
+        document.getElementById("platterSize").value = aHardDisk[counterHardDisc].platterSize;
+
+        document.getElementById("numOfPlatters").value = aHardDisk[counterHardDisc].numOfPlatters;
+
+        if (aHardDisk[counterHardDisc].status == true) {
+            document.getElementsByName("status1")[0].checked = true;
+        } else {
+            document.getElementsByName("status1")[1].checked = true;
+        }
+
+        document.getElementById("badge2").innerHTML = counterHardDisc +1;
+    }
+    print2();
 
     // "New" buttons
 
@@ -372,6 +397,49 @@
 
     }
 
+
+    function btnNew2() {
+        // declaring DOM to less coding
+        let hardDiv = document.getElementById("hardDisk");
+        let cost = document.getElementById("replacementCost2").value;
+        let name = document.getElementById("name2").value;
+        let num = document.getElementById("serialNumber2").value;
+        let stat = document.querySelector("input[name=status1]:checked").value
+        if (stat == "enabled") {
+            stat = true;
+        } else {
+            stat = false;
+        }
+        let size = document.getElementById("size").value;
+        let transferRate = document.getElementById("rate").value;
+        let platterSize = document.getElementById("platterSize").value;
+        let numOfPlatters = document.getElementById("numOfPlatters").value;
+
+        if (cost && name && num && res && size && transferRate && platterSize && numOfPlatters) {
+            // creating new object 
+            let hdd = new HardDisk(cost, name, num, stat, size, transferRate, platterSize, numOfPlatters);
+            // pushing to aVideoDevice array
+            aHardDisk.push(hdd);
+
+            // query selector to clear all inputs in div#videoDevice 
+            var inputs = document.querySelectorAll("div#hardDisk input");
+            for (let index = 0; index < inputs.length; index++) {
+                const element = inputs[index];
+                element.value = "";
+            }
+            hardDiv.classList.remove("border-light")
+            hardDiv.classList.add("border-success");
+            document.getElementById("badge2").innerHTML = "";
+
+        } else { // in case some of inputs are empty changes colors of border to red
+            hardDiv.classList.remove("border-light")
+            hardDiv.classList.add("border-danger");
+            document.getElementById("badge2").innerHTML = "";
+        }
+
+
+    }
+
     // next buttons
 
     function btnNext1() {
@@ -382,6 +450,17 @@
             vidDiv.classList.remove("border-danger");
             vidDiv.classList.remove("border-success");
             vidDiv.classList.add("border-light")
+        }
+    }
+
+    function btnNext2() {
+        if(counterHardDisc < aHardDisk.length -1) {
+            counterHardDisc++;
+            print2();
+            let hardDiv = document.getElementById("hardDisk");
+            hardDiv.classList.remove("border-danger");
+            hardDiv.classList.remove("border-success");
+            hardDiv.classList.add("border-light")
         }
     }
 
@@ -401,6 +480,23 @@
             vidDiv.classList.remove("border-danger");
             vidDiv.classList.remove("border-success");
             vidDiv.classList.add("border-light")
+        }
+    }
+
+    function previousBtn2() {
+        if(counterHardDisc == 0) {
+            print2();
+            let hardDiv = document.getElementById("hardDisk");
+            hardDiv.classList.remove("border-danger");
+            hardDiv.classList.remove("border-success");
+            hardDiv.classList.add("border-light")
+        } else if (counterHardDisc > 0) {
+            counterHardDisc--;
+            print2();
+            let hardDiv = document.getElementById("hardDisk");
+            hardDiv.classList.remove("border-danger");
+            hardDiv.classList.remove("border-success");
+            hardDiv.classList.add("border-light")
         }
     }
 
@@ -450,6 +546,58 @@
             vidDiv.classList.add("border-danger");
             document.getElementById("badge1").innerHTML = "";
         }
+    }
+
+    function update2() {
+
+        let hardDiv = document.getElementById("hardDisk");
+        let cost = document.getElementById("replacementCost2").value;
+        let name = document.getElementById("name2").value;
+        let num = document.getElementById("serialNumber2").value;
+        let stat = document.querySelector("input[name=status1]:checked").value
+        if (stat == "enabled") {
+            stat = true;
+        } else {
+            stat = false;
+        }
+        let size = document.getElementById("size").value;
+        let transferRate = document.getElementById("rate").value;
+        let platterSize = document.getElementById("platterSize").value;
+        let numOfPlatters = document.getElementById("numOfPlatters").value;
+
+        if (cost && name && num && res && size && transferRate && platterSize && numOfPlatters) {
+            // creating new object 
+            var el = aHardDisk[counterHardDisc];
+            el.replacementCost = cost;
+            el.supplierName = name;
+            el.serialNumber = num;
+            el.size = size;
+            el.transferRate = transferRate;
+            el.platterSize = platterSize;
+            el.numOfPlatters = numOfPlatters;
+            if (stat == "enabled") {
+                el.status = true;
+            } else {
+                el.status = false;
+            }
+
+            // query selector to clear all inputs in div#videoDevice 
+            var inputs = document.querySelectorAll("div#hardDisk input");
+            for (let index = 0; index < inputs.length; index++) {
+                const element = inputs[index];
+                element.value = "";
+            }
+            hardDiv.classList.remove("border-light")
+            hardDiv.classList.add("border-success");
+            document.getElementById("badge2").innerHTML = "";
+
+        } else { // in case some of inputs are empty changes colors of border to red
+            hardDiv.classList.remove("border-light")
+            hardDiv.classList.add("border-danger");
+            document.getElementById("badge2").innerHTML = "";
+        }
+
+        
     }
 
 
