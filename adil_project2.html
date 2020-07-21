@@ -20,12 +20,11 @@
     </style>
 </head>
 <body>
-    <input type="text" id="test">
     <div class="container">
         <h1>Final project OOP</h1>
         <div class="row justify-content-around">
             <!-- Video Device  -->
-            <div class="card border-light col-sm" id="videoDevice">
+            <div class="card border-light col-sm m-3" id="videoDevice">
                 <div class="card-body">
                     <h5 class="card-title">Video Device<span class="badge badge-secondary" id="badge1"></span>
                     </h5>
@@ -36,9 +35,6 @@
                           <span class="input-group-text">$</span>
                         </div>
                         <input type="text" class="form-control" aria-label="Amount (to the nearest dollar)" id="replacementCost1">
-                        <div class="input-group-append">
-                          <span class="input-group-text">.00</span>
-                        </div>
                     </div>
                     <!-- replacementCost -->
 
@@ -96,68 +92,88 @@
             <!-- end Video Device  -->
 
             <!-- Hard Disc -->
-            <div class="card border-light col-sm" >
+            <div class="card border-light col-sm m-3" id="hardDisk">
                 <div class="card-body">
-                    <h5 class="card-title">Hard Disc</h5>
+                    <h5 class="card-title">Video Device<span class="badge badge-secondary" id="badge2"></span>
+                    </h5>
                     <!-- replacementCost -->
-                    <label for="replacementCost">Replacement Cost:</label>
+                    <label for="replacementCost2">Replacement Cost:</label>
                     <div class="input-group mb-3">
                         <div class="input-group-prepend">
                           <span class="input-group-text">$</span>
                         </div>
-                        <input type="text" class="form-control" aria-label="Amount (to the nearest dollar)" id="replacementCost">
-                        <div class="input-group-append">
-                          <span class="input-group-text">.00</span>
-                        </div>
+                        <input type="text" class="form-control" aria-label="Amount (to the nearest dollar)" id="replacementCost2">
                     </div>
                     <!-- replacementCost -->
 
                     <!-- Name -->
-                    <label for="name">Supplier name:</label>
+                    <label for="name2">Supplier name:</label>
                     <div class="input-group input-group-sm mb-3">
-                        <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" id="name">
+                        <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" id="name2">
                     </div>
                     <!-- end Name -->
 
                     <!-- Serial number -->
-                    <label for="serialNumber">Serial number:</label>
+                    <label for="serialNumber2">Serial number:</label>
                     <div class="input-group input-group-sm mb-3">
                         <div class="input-group-prepend">
                             <span class="input-group-text" id="inputGroup-sizing-sm">Nº</span>
                         </div>
-                        <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" id="serialNumber">
+                        <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" id="serialNumber2">
                     </div>
                     <!-- end Serial number -->
 
                     <!-- resolution -->
-                    <label for="resolution">Resolution:</label>
-                    <div class="input-group">
-                        <input type="text" class="form-control" aria-label="Text input with dropdown button" id="resolution">
-                        <div class="input-group-append">
-                        <select name="res" id="res">
-                            <option value="LCD">LCD</option>
-                            <option value="LED">LED</option>
-                            <option value="Plasma">Plasma</option>
-                        </select>
-                        
-                        </div>
+                    <label for="size">Size:</label>
+                    <div class="input-group input-group-sm mb-3">
+                        <input type="text" class="form-control" aria-label="Text input with dropdown button" id="size">
                     </div>
                     <!-- end resolution -->
+
+                    <!-- Transfer Rate: -->
+                    <label for="rate">Transfer Rate:</label>
+                    <div class="input-group input-group-sm mb-3">
+                        <input type="text" class="form-control" aria-label="Text input with dropdown button" id="rate">
+                    </div>
+                    <!-- end Transfer Rate: -->
+                    
+                    <!-- Platter Size: -->
+                    <label for="platterSize">Platter Size:</label>
+                    <div class="input-group input-group-sm mb-3">
+                        <input type="text" class="form-control" aria-label="Text input with dropdown button" id="platterSize">
+                    </div>
+                    <!-- Platter Size: -->
+
+                    <!-- Number of Platters: -->
+                    <label for="numOfPlatters">Number of Platters:</label>
+                    <div class="input-group input-group-sm mb-3">
+                        <input type="text" class="form-control" aria-label="Text input with dropdown button" id="numOfPlatters">
+                    </div>
+                    <!-- Number of Platters: -->
+
+                    <!-- radio -->
+                    <div id="status1" class="m-3">
+                        <input type="radio" id="enabled" name="status" value="enabled">
+                        <label for="enabled">Enabled</label>
+                        <input type="radio" id="disabled" name="status" value="disabled">
+                        <label for="disabled">Disable</label>
+                    </div>
+                    <!-- end radio -->
 
                 </div>
                 <!-- btns -->
                 <div class="card-body">
-                    <button type="button mb-3" class="btn btn-primary">Next</button>
-                    <button type="button mb-3" class="btn btn-primary">Previous</button>
-                    <button type="button mb-3" class="btn btn-info">New</button>
-                    <button type="button mb-3" class="btn btn-success">Update</button>
+                    <button type="button mb-3" class="btn btn-primary" onclick="previousBtn();">Previous</button>
+                    <button type="button mb-3" class="btn btn-primary" onclick="btnNext1();">Next</button>
+                    <button type="button mb-3" class="btn btn-info" onclick="btnNew1()">New</button>
+                    <button type="button mb-3" class="btn btn-success" onclick="update1();">Update</button>
                 </div>
                 <!-- end btns -->
             </div>
             <!-- end Hard Disc -->
 
             <!-- SSD -->
-            <div class="card border-light col-sm" >
+            <div class="card border-light col-sm m-3" >
                 <div class="card-body">
                     <h5 class="card-title">SSD</h5>
                     <!-- replacementCost -->
@@ -308,6 +324,7 @@
     
         document.getElementById("res1").selectedIndex = aVideoDevice[counterVideoDevice].deviceType;
 
+        // badge changing
         document.getElementById("badge1").innerHTML = counterVideoDevice +1;
     }
 
@@ -316,6 +333,7 @@
     // "New" buttons
 
     function btnNew1() {
+        // declaring DOM to less coding
         let vidDiv = document.getElementById("videoDevice");
         let cost = document.getElementById("replacementCost1").value;
         let name = document.getElementById("name1").value;
@@ -330,12 +348,13 @@
         let dev = document.getElementById("res1").value;
 
         if (cost && name && num && res) {
+            // creating new object 
             let videoDevice = new VideoDevice(cost, name, num, stat, res, dev);
-
+            // pushing to aVideoDevice array
             aVideoDevice.push(videoDevice);
 
+            // query selector to clear all inputs in div#videoDevice 
             var inputs = document.querySelectorAll("div#videoDevice input");
-
             for (let index = 0; index < inputs.length; index++) {
                 const element = inputs[index];
                 element.value = "";
@@ -343,7 +362,8 @@
             vidDiv.classList.remove("border-light")
             vidDiv.classList.add("border-success");
             document.getElementById("badge1").innerHTML = "";
-        } else {
+
+        } else { // in case some of inputs are empty changes colors of border to red
             vidDiv.classList.remove("border-light")
             vidDiv.classList.add("border-danger");
             document.getElementById("badge1").innerHTML = "";
@@ -387,6 +407,7 @@
     //update buttons 
 
     function update1() {
+        // declaring DOM to less coding
         let vidDiv = document.getElementById("videoDevice");
         let cost = document.getElementById("replacementCost1").value;
         let name = document.getElementById("name1").value;
@@ -401,7 +422,7 @@
         let dev = document.getElementById("res1").value;
 
         if (cost && name && num && res) {
-
+            // changing values in object 
             var el = aVideoDevice[counterVideoDevice];
             el.replacementCost = cost;
             el.supplierName = name;
@@ -414,8 +435,8 @@
                 el.status = false;
             }
             
+            // query selector to clear all inputs in div#videoDevice 
             var inputs = document.querySelectorAll("div#videoDevice input");
-
             for (let index = 0; index < inputs.length; index++) {
                 const element = inputs[index];
                 element.value = "";
@@ -423,13 +444,12 @@
             vidDiv.classList.remove("border-light")
             vidDiv.classList.add("border-success");
             document.getElementById("badge1").innerHTML = "";
-        } else {
+
+        } else { // in case some of inputs are empty changes colors of border to red
             vidDiv.classList.remove("border-light")
             vidDiv.classList.add("border-danger");
             document.getElementById("badge1").innerHTML = "";
         }
-
-
     }
 
 
