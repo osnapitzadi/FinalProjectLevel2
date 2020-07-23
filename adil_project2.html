@@ -29,12 +29,12 @@
                     <h5 class="card-title">Video Device<span class="badge badge-secondary" id="badge1"></span>
                     </h5>
 
-                    <!-- radio -->
+                    <!-- checkbox -->
                     <div id="status1" class="m-3">
-                        <input type="checkbox" id="enable1" name="status" value="1" onchange="changeCheckbox1();"> Enable
-			            <input type="checkbox" id="disable1" name="status" value="0" onchange="changeCheckbox1();"> Disable
+                        <input type="checkbox" id="enable1" name="status" onclick="checkboxChange1(this);"> Enable
+			            <input type="checkbox" id="disable1" name="status" onclick="checkboxChange1(this);"> Disable
                     </div>
-                    <!-- end radio -->
+                    <!-- end checkbox -->
 
                     <!-- replacementCost -->
                     <label for="replacementCost">Replacement Cost:</label>
@@ -95,11 +95,9 @@
                     <h5 class="card-title">Hard Disc<span class="badge badge-secondary" id="badge2"></span>
                     </h5>
                     <!-- radio -->
-                    <div id="status1" class="m-3">
-                        <input type="radio" class="st" id="enabled" name="status1" value="enabled">
-                        <label for="enabled">Enabled</label>
-                        <input type="radio" class="st" id="disabled" name="status1" value="disabled" checked>
-                        <label for="disabled">Disable</label>
+                    <div id="status2" class="m-3">
+                        <input type="checkbox" id="enable2" name="status2" onchange="checkboxChange2(this);"> Enable
+			            <input type="checkbox" id="disable2" name="status2" onchange="checkboxChange2(this);"> Disable
                     </div>
                     <!-- end radio -->
 
@@ -177,11 +175,9 @@
                     </h5>
 
                     <!-- radio -->
-                    <div id="status3" class="m-3">
-                        <input type="radio" class="st" id="enabled" name="status3" value="true">
-                        <label for="enabled">Enabled</label>
-                        <input type="radio" class="st" id="disabled" name="status3" value="false" checked>
-                        <label for="disabled">Disable</label>
+                    <div id="status2" class="m-3">
+                        <input type="checkbox" id="enable3" name="status3" onchange="checkboxChange3(this);"> Enable
+			            <input type="checkbox" id="disable3" name="status2" onchange="checkboxChange3(this);"> Disable
                     </div>
                     <!-- end radio -->
 
@@ -327,19 +323,59 @@
     var counterHardDisc = 0;
     var counterSsd = 0;
 
-    // checkbox functions
-    function changeCheckbox1() {
-			if (document.getElementById("enable1").checked == true && document.getElementById("disable1").checked == true) {
-				document.getElementById("enable1").checked = false;
-				document.getElementById("disable1").checked = false;
-			}
-			else if (document.getElementById("enable1").checked == true){
-				status1 = 1;
-			} 
-			else {
-				status1 = 0;
-			}
-		}
+    // checkbox functions whith radio button habit 
+
+    function checkboxChange1(obj) {
+        let that = obj,
+        triggerChoice = document.getElementById(that.id);
+        enabled = document.getElementById("enable1"),
+        disabled = document.getElementById("disable1");
+
+        if (triggerChoice.checked && triggerChoice.id === "enable1") { 
+            disabled.checked = false;
+        }
+        if (triggerChoice.checked && triggerChoice.id === "disable1") 
+        {
+            enabled.checked = false;
+        }
+        return that.checked;
+    }   
+
+    function checkboxChange2(obj) {
+        let that = obj,
+        triggerChoice = document.getElementById(that.id);
+        enabled = document.getElementById("enable2"),
+        disabled = document.getElementById("disable2");
+
+        if (triggerChoice.checked && triggerChoice.id === "enable2") { 
+            disabled.checked = false;
+        }
+        if (triggerChoice.checked && triggerChoice.id === "disable2") 
+        {
+            enabled.checked = false;
+        }
+        return that.checked;
+    }   
+
+    function checkboxChange3(obj) {
+        let that = obj,
+        triggerChoice = document.getElementById(that.id);
+        enabled = document.getElementById("enable3"),
+        disabled = document.getElementById("disable3");
+
+        if (triggerChoice.checked && triggerChoice.id === "enable3") { 
+            disabled.checked = false;
+        }
+        if (triggerChoice.checked && triggerChoice.id === "disable3") 
+        {
+            enabled.checked = false;
+        }
+        return that.checked;
+    }   
+
+    // end checkbox-radio 
+
+
     // Print functions
     function print1() {
         document.getElementById("replacementCost1").value = aVideoDevice[counterVideoDevice].replacementCost;
@@ -388,7 +424,6 @@
 
         document.getElementById("badge2").innerHTML = counterHardDisc +1;
     }
-    print2();
 
     function print3() {
 
@@ -418,7 +453,6 @@
 
         document.getElementById("badge3").innerHTML = counterSsd +1;
     }
-    print3();
 
     // "New" buttons
     function btnNew1() {
@@ -428,11 +462,13 @@
         let name = document.getElementById("name1").value;
         let num = document.getElementById("serialNumber1").value;
         let stat = document.getElementsByName("status");
+        // checkbox
         if (stat[0].checked == true) {
             stat = true;
         } else {
             stat = false;
         }
+        // end checkbox
         let res = document.getElementById("resolution1").value;
         let dev = document.getElementById("res1").value;
 
