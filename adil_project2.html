@@ -177,7 +177,7 @@
                     <!-- radio -->
                     <div id="status2" class="m-3">
                         <input type="checkbox" id="enable3" name="status3" onchange="checkboxChange3(this);"> Enable
-			            <input type="checkbox" id="disable3" name="status2" onchange="checkboxChange3(this);"> Disable
+			            <input type="checkbox" id="disable3" name="status3" onchange="checkboxChange3(this);"> Disable
                     </div>
                     <!-- end radio -->
 
@@ -387,8 +387,10 @@
         // checkbox validation
         if (aVideoDevice[counterVideoDevice].status == true) {
             document.getElementsByName("status")[0].checked = true;
+            document.getElementsByName("status")[1].checked = false;
         } else {
             document.getElementsByName("status")[1].checked = true;
+            document.getElementsByName("status")[0].checked = false;
         }
         // end checkbox 
 
@@ -399,6 +401,7 @@
 
         // badge changing
         document.getElementById("badge1").innerHTML = counterVideoDevice +1;
+
     }
 
     function print2() {
@@ -417,9 +420,11 @@
         document.getElementById("numOfPlatters").value = aHardDisk[counterHardDisc].numOfPlatters;
 
         if (aHardDisk[counterHardDisc].status == true) {
-            document.getElementsByName("status1")[0].checked = true;
+            document.getElementsByName("status2")[0].checked = true;
+            document.getElementsByName("status2")[1].checked = false;
         } else {
-            document.getElementsByName("status1")[1].checked = true;
+            document.getElementsByName("status2")[1].checked = true;
+            document.getElementsByName("status2")[0].checked = false;
         }
 
         document.getElementById("badge2").innerHTML = counterHardDisc +1;
@@ -441,8 +446,10 @@
 
         if (aSsdDisk[counterSsd].status == true) {
             document.getElementsByName("status3")[0].checked = true;
+            document.getElementsByName("status3")[1].checked = false;
         } else {
             document.getElementsByName("status3")[1].checked = true;
+            document.getElementsByName("status3")[0].checked = false;
         }
 
         if (aSsdDisk[counterSsd].wearLeveling == true) {
@@ -462,7 +469,12 @@
         let name = document.getElementById("name1").value;
         let num = document.getElementById("serialNumber1").value;
         let stat = document.getElementsByName("status");
-        // checkbox
+        // validation for checkbox
+        let isSmthChecked = false;
+        if (stat[0].checked || stat[1].checked) {
+            isSmthChecked = true;
+        } 
+        // // checkbox
         if (stat[0].checked == true) {
             stat = true;
         } else {
@@ -472,7 +484,7 @@
         let res = document.getElementById("resolution1").value;
         let dev = document.getElementById("res1").value;
 
-        if (cost && name && num && res) {
+        if (cost && name && num && res && isSmthChecked) {
             // creating new object 
             let videoDevice = new VideoDevice(cost, name, num, stat, res, dev);
             // pushing to aVideoDevice array
@@ -506,8 +518,12 @@
         let cost = document.getElementById("replacementCost2").value;
         let name = document.getElementById("name2").value;
         let num = document.getElementById("serialNumber2").value;
-        let stat = document.querySelector("input[name=status1]:checked").value
-        if (stat == "enabled") {
+        let stat = document.getElementsByName("status2");
+        let isSmthChecked = false;
+        if (stat[0].checked || stat[1].checked) {
+            isSmthChecked = true;
+        } 
+        if (stat[0].checked == true) {
             stat = true;
         } else {
             stat = false;
@@ -517,7 +533,7 @@
         let platterSize = document.getElementById("platterSize").value;
         let numOfPlatters = document.getElementById("numOfPlatters").value;
 
-        if (cost && name && num && size && transferRate && platterSize && numOfPlatters) {
+        if (cost && name && num && size && transferRate && platterSize && numOfPlatters && isSmthChecked) {
             // creating new object 
             let hdd = new HardDisk(cost, name, num, stat, size, transferRate, platterSize, numOfPlatters);
             // pushing to aVideoDevice array
@@ -550,7 +566,12 @@
         let cost = document.getElementById("replacementCost3").value;
         let name = document.getElementById("name3").value;
         let num = document.getElementById("serialNumber3").value;
-        let stat = document.querySelector("input[name=status3]:checked").value
+        let stat = document.getElementsByName("status3");
+        // validation for checkbox
+        let isSmthChecked = false;
+        if (stat[0].checked || stat[1].checked) {
+            isSmthChecked = true;
+        } 
         if (stat == "enabled") {
             stat = true;
         } else {
@@ -566,7 +587,7 @@
             wearLeveling = false;
         }
 
-        if (cost && name && num && size && transferRate) {
+        if (cost && name && num && size && transferRate && isSmthChecked) {
             // creating new object 
             let ssd = new SsdDisk(cost, name, num, stat, size, transferRate, ssdSize, );
             // pushing to aVideoDevice array
@@ -631,7 +652,9 @@
     // previous buttons 
 
     function previousBtn() {
-        if(counterVideoDevice == 0) {
+        if (aVideoDevice.length == 0) {
+            alert("No video devices");
+        } else if(counterVideoDevice == 0) {
             print1();
             let vidDiv = document.getElementById("videoDevice");
             vidDiv.classList.remove("border-danger");
@@ -648,7 +671,9 @@
     }
 
     function previousBtn2() {
-        if(counterHardDisc == 0) {
+        if (aHardDisk.length == 0) {
+            alert("No hard disc");
+        } else if(counterHardDisc == 0) {
             print2();
             let hardDiv = document.getElementById("hardDisk");
             hardDiv.classList.remove("border-danger");
@@ -665,7 +690,9 @@
     }
 
     function previousBtn3() {
-        if(counterSsd == 0) {
+        if (aSsdDisk.length == 0) {
+            alert("No ssd");
+        } else if(counterSsd == 0) {
             print3();
             let ssdDiv = document.getElementById("ssd");
             ssdDiv.classList.remove("border-danger");
@@ -689,8 +716,13 @@
         let cost = document.getElementById("replacementCost1").value;
         let name = document.getElementById("name1").value;
         let num = document.getElementById("serialNumber1").value;
-        let stat = document.querySelector("input[name=status]:checked").value
-        if (stat == "enabled") {
+        let stat = document.getElementsByName("status");
+        let isSmthChecked = false;
+        if (stat[0].checked || stat[1].checked) {
+            isSmthChecked = true;
+        } 
+        // // checkbox
+        if (stat[0].checked == true) {
             stat = true;
         } else {
             stat = false;
@@ -700,7 +732,7 @@
 
         if (aVideoDevice.length == 0) {
             alert("Nothing to update");
-        } else if (cost && name && num && res) {
+        } else if (cost && name && num && res && isSmthChecked) {
             // changing values in object 
             var el = aVideoDevice[counterVideoDevice];
             el.replacementCost = cost;
@@ -708,11 +740,7 @@
             el.serialNumber = num;
             el.resolution = res;
             el.deviceType = dev;
-            if (stat == "enabled") {
-                el.status = true;
-            } else {
-                el.status = false;
-            }
+            el.status = stat;
             
             // query selector to clear all inputs in div#videoDevice 
             var inputs = document.querySelectorAll("div#videoDevice input:not(.st)");
@@ -720,12 +748,14 @@
                 const element = inputs[index];
                 element.value = "";
             }
-            vidDiv.classList.remove("border-light")
+            vidDiv.classList.remove("border-light");
+            vidDiv.classList.remove("border-danger");
             vidDiv.classList.add("border-success");
             document.getElementById("badge1").innerHTML = "";
 
         } else { // in case some of inputs are empty changes colors of border to red
-            vidDiv.classList.remove("border-light")
+            vidDiv.classList.remove("border-light");
+            vidDiv.classList.remove("border-success");
             vidDiv.classList.add("border-danger");
             document.getElementById("badge1").innerHTML = "";
         }
@@ -737,8 +767,13 @@
         let cost = document.getElementById("replacementCost2").value;
         let name = document.getElementById("name2").value;
         let num = document.getElementById("serialNumber2").value;
-        let stat = document.querySelector("input[name=status1]:checked").value
-        if (stat == "enabled") {
+        let stat = document.getElementsByName("status2");
+        let isSmthChecked = false;
+        if (stat[0].checked || stat[1].checked) {
+            isSmthChecked = true;
+        } 
+        // // checkbox
+        if (stat[0].checked == true) {
             stat = true;
         } else {
             stat = false;
@@ -750,7 +785,7 @@
 
         if (aHardDisk.length == 0){
             alert("Nothing to update");
-        } else if (cost && name && num && size && transferRate && platterSize && numOfPlatters) {
+        } else if (cost && name && num && size && transferRate && platterSize && numOfPlatters && isSmthChecked) {
             // creating new object 
             var el = aHardDisk[counterHardDisc];
             el.replacementCost = cost;
@@ -760,11 +795,7 @@
             el.transferRate = transferRate;
             el.platterSize = platterSize;
             el.numOfPlatters = numOfPlatters;
-            if (stat == "enabled") {
-                el.status = true;
-            } else {
-                el.status = false;
-            }
+            el.status = stat;
 
             // query selector to clear all inputs in div#videoDevice 
             var inputs = document.querySelectorAll("div#hardDisk input:not(.st)");
@@ -772,12 +803,14 @@
                 const element = inputs[index];
                 element.value = "";
             }
-            hardDiv.classList.remove("border-light")
+            hardDiv.classList.remove("border-light");
+            hardDiv.classList.remove("border-danger");
             hardDiv.classList.add("border-success");
             document.getElementById("badge2").innerHTML = "";
 
         } else { // in case some of inputs are empty changes colors of border to red
-            hardDiv.classList.remove("border-light")
+            hardDiv.classList.remove("border-light");
+            hardDiv.classList.remove("border-success");
             hardDiv.classList.add("border-danger");
             document.getElementById("badge2").innerHTML = "";
         }
@@ -786,14 +819,18 @@
     }
 
     function update3() {
-
         // declaring DOM to less coding
         let ssdDiv = document.getElementById("ssd");
         let cost = document.getElementById("replacementCost3").value;
         let name = document.getElementById("name3").value;
         let num = document.getElementById("serialNumber3").value;
-        let stat = document.querySelector("input[name=status3]:checked").value
-        if (stat == "enabled") {
+        let stat = document.getElementsByName("status3");
+        let isSmthChecked = false;
+        if (stat[0].checked || stat[1].checked) {
+            isSmthChecked = true;
+        } 
+        // // checkbox
+        if (stat[0].checked == true) {
             stat = true;
         } else {
             stat = false;
@@ -816,12 +853,7 @@
             el.serialNumber = num;
             el.size = size;
             el.transferRate = transferRate;
-
-            if (stat == "enabled") {
-                el.status = true;
-            } else {
-                el.status = false;
-            }
+            el.status = stat;
 
             if (wearLeveling == "enabled") {
                 el.wearLeveling = true;
@@ -836,12 +868,14 @@
                 const element = inputs[index];
                 element.value = "";
             }
-            ssdDiv.classList.remove("border-light")
+            ssdDiv.classList.remove("border-light");
+            ssdDiv.classList.remove("border-danger");
             ssdDiv.classList.add("border-success");
             document.getElementById("badge3").innerHTML = "";
 
         } else { // in case some of inputs are empty changes colors of border to red
-            ssdDiv.classList.remove("border-light")
+            ssdDiv.classList.remove("border-light");
+            ssdDiv.classList.remove("border-success");
             ssdDiv.classList.add("border-danger");
             document.getElementById("badge3").innerHTML = "";
         }
