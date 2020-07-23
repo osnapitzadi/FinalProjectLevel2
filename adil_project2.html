@@ -397,7 +397,7 @@
         document.getElementById("resolution1").value = aVideoDevice[counterVideoDevice].resolution;
 
     
-        document.getElementById("res1").selectedIndex = aVideoDevice[counterVideoDevice].deviceType;
+        document.getElementById("res1").value = aVideoDevice[counterVideoDevice].deviceType;
 
         // badge changing
         document.getElementById("badge1").innerHTML = counterVideoDevice +1;
@@ -845,7 +845,7 @@
             wearLeveling = false;
         }
 
-        if (cost && name && num && size && transferRate) {
+        if (cost && name && num && size && transferRate && isSmthChecked) {
 
             var el = aSsdDisk[counterSsd];
             el.replacementCost = cost;
@@ -854,6 +854,7 @@
             el.size = size;
             el.transferRate = transferRate;
             el.status = stat;
+            el.ssdSize = ssdSize;
 
             if (wearLeveling == "enabled") {
                 el.wearLeveling = true;
