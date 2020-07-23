@@ -580,8 +580,8 @@
         let size = document.getElementById("size3").value;
         let transferRate = document.getElementById("rate3").value;
         let ssdSize = document.getElementById("ssdSize").value;
-        let wearLeveling = document.querySelector("input[name=wl3]:checked").value
-        if (wearLeveling == "enabled") {
+        let wearLeveling = document.getElementsByName("wl3");
+        if (wearLeveling[0].checked == true) {
             wearLeveling = true;
         } else {
             wearLeveling = false;
@@ -589,7 +589,7 @@
 
         if (cost && name && num && size && transferRate && isSmthChecked) {
             // creating new object 
-            let ssd = new SsdDisk(cost, name, num, stat, size, transferRate, ssdSize, );
+            let ssd = new SsdDisk(cost, name, num, stat, size, transferRate, ssdSize, wearLeveling);
             // pushing to aVideoDevice array
             aSsdDisk.push(ssd);
 
@@ -838,8 +838,8 @@
         let size = document.getElementById("size3").value;
         let transferRate = document.getElementById("rate3").value;
         let ssdSize = document.getElementById("ssdSize").value;
-        let wearLeveling = document.querySelector("input[name=wl3]:checked").value
-        if (wearLeveling == "enabled") {
+        let wearLeveling = document.getElementsByName("wl3");
+        if (wearLeveling[0].checked) {
             wearLeveling = true;
         } else {
             wearLeveling = false;
@@ -855,12 +855,7 @@
             el.transferRate = transferRate;
             el.status = stat;
             el.ssdSize = ssdSize;
-
-            if (wearLeveling == "enabled") {
-                el.wearLeveling = true;
-            } else {
-                el.wearLeveling = false;
-            }
+            el.wearLeveling = wearLeveling;
 
 
             // query selector to clear all inputs in div#videoDevice exept .st
