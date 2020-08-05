@@ -20,15 +20,22 @@
     </style>
 </head>
 <body>
-    <input type="text" id="test">
     <div class="container">
         <h1>Final project OOP</h1>
         <div class="row justify-content-around">
             <!-- Video Device  -->
-            <div class="card border-light col-sm" id="videoDevice">
+            <div class="card border-light col-sm m-3" id="videoDevice">
                 <div class="card-body">
                     <h5 class="card-title">Video Device<span class="badge badge-secondary" id="badge1"></span>
                     </h5>
+
+                    <!-- checkbox -->
+                    <div id="status1" class="m-3">
+                        <input type="checkbox" id="enable1" name="status" onclick="checkboxChange1(this);"> Enable
+			            <input type="checkbox" id="disable1" name="status" onclick="checkboxChange1(this);"> Disable
+                    </div>
+                    <!-- end checkbox -->
+
                     <!-- replacementCost -->
                     <label for="replacementCost">Replacement Cost:</label>
                     <div class="input-group mb-3">
@@ -36,9 +43,6 @@
                           <span class="input-group-text">$</span>
                         </div>
                         <input type="text" class="form-control" aria-label="Amount (to the nearest dollar)" id="replacementCost1">
-                        <div class="input-group-append">
-                          <span class="input-group-text">.00</span>
-                        </div>
                     </div>
                     <!-- replacementCost -->
 
@@ -64,24 +68,14 @@
                     <div class="input-group">
                         <input type="text" class="form-control" aria-label="Text input with dropdown button" id="resolution1">
                         <div class="input-group-append">
-                        <select name="res1" id="res1">
-                            <option value="LCD" id="lcd1">LCD</option>
-                            <option value="LED" id="led1">LED</option>
-                            <option value="Plasma" id="plasma1">Plasma</option>
-                        </select>
-                        
+                            <select name="res1" id="res1">
+                                <option value="LCD" id="lcd1">LCD</option>
+                                <option value="LED" id="led1">LED</option>
+                                <option value="Plasma" id="plasma1">Plasma</option>
+                            </select>
                         </div>
                     </div>
                     <!-- end resolution -->
-
-                    <!-- radio -->
-                    <div id="status1">
-                        <input type="radio" id="enabled" name="status" value="enabled">
-                        <label for="enabled">Enabled</label>
-                        <input type="radio" id="disabled" name="status" value="disabled">
-                        <label for="disabled">Disable</label>
-                    </div>
-                    <!-- end radio -->
 
                 </div>
                 <!-- btns -->
@@ -96,122 +90,163 @@
             <!-- end Video Device  -->
 
             <!-- Hard Disc -->
-            <div class="card border-light col-sm" >
+            <div class="card border-light col-sm m-3" id="hardDisk">
                 <div class="card-body">
-                    <h5 class="card-title">Hard Disc</h5>
+                    <h5 class="card-title">Hard Disc<span class="badge badge-secondary" id="badge2"></span>
+                    </h5>
+                    <!-- radio -->
+                    <div id="status2" class="m-3">
+                        <input type="checkbox" id="enable2" name="status2" onchange="checkboxChange2(this);"> Enable
+			            <input type="checkbox" id="disable2" name="status2" onchange="checkboxChange2(this);"> Disable
+                    </div>
+                    <!-- end radio -->
+
                     <!-- replacementCost -->
-                    <label for="replacementCost">Replacement Cost:</label>
+                    <label for="replacementCost2">Replacement Cost:</label>
                     <div class="input-group mb-3">
                         <div class="input-group-prepend">
                           <span class="input-group-text">$</span>
                         </div>
-                        <input type="text" class="form-control" aria-label="Amount (to the nearest dollar)" id="replacementCost">
-                        <div class="input-group-append">
-                          <span class="input-group-text">.00</span>
-                        </div>
+                        <input type="text" class="form-control" aria-label="Amount (to the nearest dollar)" id="replacementCost2">
                     </div>
                     <!-- replacementCost -->
 
                     <!-- Name -->
-                    <label for="name">Supplier name:</label>
+                    <label for="name2">Supplier name:</label>
                     <div class="input-group input-group-sm mb-3">
-                        <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" id="name">
+                        <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" id="name2">
                     </div>
                     <!-- end Name -->
 
                     <!-- Serial number -->
-                    <label for="serialNumber">Serial number:</label>
+                    <label for="serialNumber2">Serial number:</label>
                     <div class="input-group input-group-sm mb-3">
                         <div class="input-group-prepend">
                             <span class="input-group-text" id="inputGroup-sizing-sm">Nº</span>
                         </div>
-                        <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" id="serialNumber">
+                        <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" id="serialNumber2">
                     </div>
                     <!-- end Serial number -->
 
-                    <!-- resolution -->
-                    <label for="resolution">Resolution:</label>
-                    <div class="input-group">
-                        <input type="text" class="form-control" aria-label="Text input with dropdown button" id="resolution">
-                        <div class="input-group-append">
-                        <select name="res" id="res">
-                            <option value="LCD">LCD</option>
-                            <option value="LED">LED</option>
-                            <option value="Plasma">Plasma</option>
-                        </select>
-                        
-                        </div>
+                    <!-- size -->
+                    <label for="size">Size:</label>
+                    <div class="input-group input-group-sm mb-3">
+                        <input type="text" class="form-control" aria-label="Text input with dropdown button" id="size">
                     </div>
-                    <!-- end resolution -->
+                    <!-- end size -->
+
+                    <!-- Transfer Rate: -->
+                    <label for="rate">Transfer Rate:</label>
+                    <div class="input-group input-group-sm mb-3">
+                        <input type="text" class="form-control" aria-label="Text input with dropdown button" id="rate">
+                    </div>
+                    <!-- end Transfer Rate: -->
+                    
+                    <!-- Platter Size: -->
+                    <label for="platterSize">Platter Size:</label>
+                    <div class="input-group input-group-sm mb-3">
+                        <input type="text" class="form-control" aria-label="Text input with dropdown button" id="platterSize">
+                    </div>
+                    <!-- Platter Size: -->
+
+                    <!-- Number of Platters: -->
+                    <label for="numOfPlatters">Number of Platters:</label>
+                    <div class="input-group input-group-sm mb-3">
+                        <input type="text" class="form-control" aria-label="Text input with dropdown button" id="numOfPlatters">
+                    </div>
+                    <!-- Number of Platters: -->
 
                 </div>
                 <!-- btns -->
                 <div class="card-body">
-                    <button type="button mb-3" class="btn btn-primary">Next</button>
-                    <button type="button mb-3" class="btn btn-primary">Previous</button>
-                    <button type="button mb-3" class="btn btn-info">New</button>
-                    <button type="button mb-3" class="btn btn-success">Update</button>
+                    <button type="button mb-3" class="btn btn-primary" onclick="previousBtn2();">Previous</button>
+                    <button type="button mb-3" class="btn btn-primary" onclick="btnNext2();">Next</button>
+                    <button type="button mb-3" class="btn btn-info" onclick="btnNew2()">New</button>
+                    <button type="button mb-3" class="btn btn-success" onclick="update2();">Update</button>
                 </div>
                 <!-- end btns -->
             </div>
             <!-- end Hard Disc -->
 
             <!-- SSD -->
-            <div class="card border-light col-sm" >
+            <div class="card border-light col-sm m-3" id="ssd">
                 <div class="card-body">
-                    <h5 class="card-title">SSD</h5>
+                    <h5 class="card-title">SSD<span class="badge badge-secondary" id="badge3"></span>
+                    </h5>
+
+                    <!-- radio -->
+                    <div id="status2" class="m-3">
+                        <input type="checkbox" id="enable3" name="status3" onchange="checkboxChange3(this);"> Enable
+			            <input type="checkbox" id="disable3" name="status3" onchange="checkboxChange3(this);"> Disable
+                    </div>
+                    <!-- end radio -->
+
                     <!-- replacementCost -->
-                    <label for="replacementCost">Replacement Cost:</label>
+                    <label for="replacementCost3">Replacement Cost:</label>
                     <div class="input-group mb-3">
                         <div class="input-group-prepend">
                           <span class="input-group-text">$</span>
                         </div>
-                        <input type="text" class="form-control" aria-label="Amount (to the nearest dollar)" id="replacementCost">
-                        <div class="input-group-append">
-                          <span class="input-group-text">.00</span>
-                        </div>
+                        <input type="text" class="form-control" aria-label="Amount (to the nearest dollar)" id="replacementCost3">
                     </div>
                     <!-- replacementCost -->
 
                     <!-- Name -->
-                    <label for="name">Supplier name:</label>
+                    <label for="name3">Supplier name:</label>
                     <div class="input-group input-group-sm mb-3">
-                        <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" id="name">
+                        <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" id="name3">
                     </div>
                     <!-- end Name -->
 
                     <!-- Serial number -->
-                    <label for="serialNumber">Serial number:</label>
+                    <label for="serialNumber3">Serial number:</label>
                     <div class="input-group input-group-sm mb-3">
                         <div class="input-group-prepend">
                             <span class="input-group-text" id="inputGroup-sizing-sm">Nº</span>
                         </div>
-                        <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" id="serialNumber">
+                        <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" id="serialNumber3">
                     </div>
                     <!-- end Serial number -->
 
-                    <!-- resolution -->
-                    <label for="resolution">Resolution:</label>
-                    <div class="input-group">
-                        <input type="text" class="form-control" aria-label="Text input with dropdown button" id="resolution">
+                    <!-- size -->
+                    <label for="size3">Size:</label>
+                    <div class="input-group input-group-sm mb-3">
+                        <input type="text" class="form-control" aria-label="Text input with dropdown button" id="size3">
+                        <!-- ssd size -->
                         <div class="input-group-append">
-                        <select name="res" id="res">
-                            <option value="LCD">LCD</option>
-                            <option value="LED">LED</option>
-                            <option value="Plasma">Plasma</option>
-                        </select>
-                        
+                            <select name="ssdSize" id="ssdSize">
+                                <option value="Flash" id="Flash">Flash</option>
+                                <option value="DRAM" id="dram">DRAM</option>
+                            </select>
                         </div>
+                        <!-- ssd size -->
                     </div>
-                    <!-- end resolution -->
+                    <!-- end size -->
+
+                    <!-- Transfer Rate: -->
+                    <label for="rate3">Transfer Rate:</label>
+                    <div class="input-group input-group-sm mb-3">
+                        <input type="text" class="form-control" aria-label="Text input with dropdown button" id="rate3">
+                    </div>
+                    <!-- end Transfer Rate: -->
+                    
+                    <!-- wear leveling -->
+                    <div id="wl3" class="m-3">
+                        Wear leveling: 
+                        <input type="radio" class="st" id="true3" name="wl3" value="enabled">
+                        <label for="true">True</label>
+                        <input type="radio" class="st" id="false3" name="wl3" value="disabled" checked>
+                        <label for="false">False</label>
+                    </div>
+                    <!-- wear leveling -->
 
                 </div>
                 <!-- btns -->
                 <div class="card-body">
-                    <button type="button mb-3" class="btn btn-primary">Next</button>
-                    <button type="button mb-3" class="btn btn-primary">Previous</button>
-                    <button type="button mb-3" class="btn btn-info">New</button>
-                    <button type="button mb-3" class="btn btn-success">Update</button>
+                    <button type="button mb-3" class="btn btn-primary" onclick="previousBtn3();">Previous</button>
+                    <button type="button mb-3" class="btn btn-primary" onclick="btnNext3();">Next</button>
+                    <button type="button mb-3" class="btn btn-info" onclick="btnNew3()">New</button>
+                    <button type="button mb-3" class="btn btn-success" onclick="update3();">Update</button>
                 </div>
                 <!-- end btns -->
             </div>
@@ -281,13 +316,67 @@
 
 
     // Global variables
-    var aVideoDevice = [new VideoDevice(111,222,333,true,555,1)];
+    var aVideoDevice = [];
     var aHardDisk = [];
     var aSsdDisk = [];
     var counterVideoDevice = 0;
+    var counterHardDisc = 0;
+    var counterSsd = 0;
+
+    // checkbox functions whith radio button habit 
+
+    function checkboxChange1(obj) {
+        let that = obj,
+        triggerChoice = document.getElementById(that.id);
+        enabled = document.getElementById("enable1"),
+        disabled = document.getElementById("disable1");
+
+        if (triggerChoice.checked && triggerChoice.id === "enable1") { 
+            disabled.checked = false;
+        }
+        if (triggerChoice.checked && triggerChoice.id === "disable1") 
+        {
+            enabled.checked = false;
+        }
+        return that.checked;
+    }   
+
+    function checkboxChange2(obj) {
+        let that = obj,
+        triggerChoice = document.getElementById(that.id);
+        enabled = document.getElementById("enable2"),
+        disabled = document.getElementById("disable2");
+
+        if (triggerChoice.checked && triggerChoice.id === "enable2") { 
+            disabled.checked = false;
+        }
+        if (triggerChoice.checked && triggerChoice.id === "disable2") 
+        {
+            enabled.checked = false;
+        }
+        return that.checked;
+    }   
+
+    function checkboxChange3(obj) {
+        let that = obj,
+        triggerChoice = document.getElementById(that.id);
+        enabled = document.getElementById("enable3"),
+        disabled = document.getElementById("disable3");
+
+        if (triggerChoice.checked && triggerChoice.id === "enable3") { 
+            disabled.checked = false;
+        }
+        if (triggerChoice.checked && triggerChoice.id === "disable3") 
+        {
+            enabled.checked = false;
+        }
+        return that.checked;
+    }   
+
+    // end checkbox-radio 
+
 
     // Print functions
-
     function print1() {
         document.getElementById("replacementCost1").value = aVideoDevice[counterVideoDevice].replacementCost;
 
@@ -295,58 +384,231 @@
 
         document.getElementById("serialNumber1").value = aVideoDevice[counterVideoDevice].serialNumber;
 
-        // radio validation
+        // checkbox validation
         if (aVideoDevice[counterVideoDevice].status == true) {
             document.getElementsByName("status")[0].checked = true;
+            document.getElementsByName("status")[1].checked = false;
         } else {
             document.getElementsByName("status")[1].checked = true;
+            document.getElementsByName("status")[0].checked = false;
         }
-        // end radio 
+        // end checkbox 
 
         document.getElementById("resolution1").value = aVideoDevice[counterVideoDevice].resolution;
 
     
-        document.getElementById("res1").selectedIndex = aVideoDevice[counterVideoDevice].deviceType;
+        document.getElementById("res1").value = aVideoDevice[counterVideoDevice].deviceType;
 
+        // badge changing
         document.getElementById("badge1").innerHTML = counterVideoDevice +1;
+
     }
 
-    print1();
+    function print2() {
+        document.getElementById("replacementCost2").value = aHardDisk[counterHardDisc].replacementCost;
+
+        document.getElementById("name2").value = aHardDisk[counterHardDisc].supplierName;
+
+        document.getElementById("serialNumber2").value = aHardDisk[counterHardDisc].serialNumber;
+
+        document.getElementById("size").value = aHardDisk[counterHardDisc].size;
+
+        document.getElementById("rate").value = aHardDisk[counterHardDisc].transferRate;
+
+        document.getElementById("platterSize").value = aHardDisk[counterHardDisc].platterSize;
+
+        document.getElementById("numOfPlatters").value = aHardDisk[counterHardDisc].numOfPlatters;
+
+        if (aHardDisk[counterHardDisc].status == true) {
+            document.getElementsByName("status2")[0].checked = true;
+            document.getElementsByName("status2")[1].checked = false;
+        } else {
+            document.getElementsByName("status2")[1].checked = true;
+            document.getElementsByName("status2")[0].checked = false;
+        }
+
+        document.getElementById("badge2").innerHTML = counterHardDisc +1;
+    }
+
+    function print3() {
+
+        document.getElementById("replacementCost3").value = aSsdDisk[counterSsd].replacementCost;
+
+        document.getElementById("name3").value = aSsdDisk[counterSsd].supplierName;
+
+        document.getElementById("serialNumber3").value = aSsdDisk[counterSsd].serialNumber;
+
+        document.getElementById("size3").value = aSsdDisk[counterSsd].size;
+
+        document.getElementById("rate3").value = aSsdDisk[counterSsd].transferRate;
+
+        document.getElementById("ssdSize").value = aSsdDisk[counterSsd].ssdSize;
+
+        if (aSsdDisk[counterSsd].status == true) {
+            document.getElementsByName("status3")[0].checked = true;
+            document.getElementsByName("status3")[1].checked = false;
+        } else {
+            document.getElementsByName("status3")[1].checked = true;
+            document.getElementsByName("status3")[0].checked = false;
+        }
+
+        if (aSsdDisk[counterSsd].wearLeveling == true) {
+            document.getElementsByName("wl3")[0].checked = true;
+        } else {
+            document.getElementsByName("wl3")[1].checked = true;
+        }
+
+        document.getElementById("badge3").innerHTML = counterSsd +1;
+    }
 
     // "New" buttons
-
     function btnNew1() {
+        // declaring DOM to less coding
         let vidDiv = document.getElementById("videoDevice");
         let cost = document.getElementById("replacementCost1").value;
         let name = document.getElementById("name1").value;
         let num = document.getElementById("serialNumber1").value;
-        let stat = document.querySelector("input[name=status]:checked").value
+        let stat = document.getElementsByName("status");
+        // validation for checkbox
+        let isSmthChecked = false;
+        if (stat[0].checked || stat[1].checked) {
+            isSmthChecked = true;
+        } 
+        // // checkbox
+        if (stat[0].checked == true) {
+            stat = true;
+        } else {
+            stat = false;
+        }
+        // end checkbox
+        let res = document.getElementById("resolution1").value;
+        let dev = document.getElementById("res1").value;
+
+        if (cost && name && num && res && isSmthChecked) {
+            // creating new object 
+            let videoDevice = new VideoDevice(cost, name, num, stat, res, dev);
+            // pushing to aVideoDevice array
+            aVideoDevice.push(videoDevice);
+
+            // query selector to clear all inputs in div#videoDevice 
+            var inputs = document.querySelectorAll("div#videoDevice input:not(.st)");
+            for (let index = 0; index < inputs.length; index++) {
+                const element = inputs[index];
+                element.value = "";
+            }
+            vidDiv.classList.remove("border-light");
+            vidDiv.classList.remove("border-danger");
+            vidDiv.classList.add("border-success");
+            document.getElementById("badge1").innerHTML = "";
+
+        } else { // in case some of inputs are empty changes colors of border to red
+            vidDiv.classList.remove("border-light");
+            vidDiv.classList.remove("border-success");
+            vidDiv.classList.add("border-danger");
+            document.getElementById("badge1").innerHTML = "";
+        }
+
+
+    }
+
+
+    function btnNew2() {
+        // declaring DOM to less coding
+        let hardDiv = document.getElementById("hardDisk");
+        let cost = document.getElementById("replacementCost2").value;
+        let name = document.getElementById("name2").value;
+        let num = document.getElementById("serialNumber2").value;
+        let stat = document.getElementsByName("status2");
+        let isSmthChecked = false;
+        if (stat[0].checked || stat[1].checked) {
+            isSmthChecked = true;
+        } 
+        if (stat[0].checked == true) {
+            stat = true;
+        } else {
+            stat = false;
+        }
+        let size = document.getElementById("size").value;
+        let transferRate = document.getElementById("rate").value;
+        let platterSize = document.getElementById("platterSize").value;
+        let numOfPlatters = document.getElementById("numOfPlatters").value;
+
+        if (cost && name && num && size && transferRate && platterSize && numOfPlatters && isSmthChecked) {
+            // creating new object 
+            let hdd = new HardDisk(cost, name, num, stat, size, transferRate, platterSize, numOfPlatters);
+            // pushing to aVideoDevice array
+            aHardDisk.push(hdd);
+
+            // query selector to clear all inputs in div#videoDevice 
+            var inputs = document.querySelectorAll("div#hardDisk input:not(.st)");
+            for (let index = 0; index < inputs.length; index++) {
+                const element = inputs[index];
+                element.value = "";
+            }
+            hardDiv.classList.remove("border-light");
+            hardDiv.classList.remove("border-danger");
+            hardDiv.classList.add("border-success");
+            document.getElementById("badge2").innerHTML = "";
+
+        } else { // in case some of inputs are empty changes colors of border to red
+            hardDiv.classList.remove("border-light");
+            hardDiv.classList.remove("border-success");
+            hardDiv.classList.add("border-danger");
+            document.getElementById("badge2").innerHTML = "";
+        }
+
+
+    }
+
+    function btnNew3() {
+        // declaring DOM to less coding
+        let ssdDiv = document.getElementById("ssd");
+        let cost = document.getElementById("replacementCost3").value;
+        let name = document.getElementById("name3").value;
+        let num = document.getElementById("serialNumber3").value;
+        let stat = document.getElementsByName("status3");
+        // validation for checkbox
+        let isSmthChecked = false;
+        if (stat[0].checked || stat[1].checked) {
+            isSmthChecked = true;
+        } 
         if (stat == "enabled") {
             stat = true;
         } else {
             stat = false;
         }
-        let res = document.getElementById("resolution1").value;
-        let dev = document.getElementById("res1").value;
+        let size = document.getElementById("size3").value;
+        let transferRate = document.getElementById("rate3").value;
+        let ssdSize = document.getElementById("ssdSize").value;
+        let wearLeveling = document.getElementsByName("wl3");
+        if (wearLeveling[0].checked == true) {
+            wearLeveling = true;
+        } else {
+            wearLeveling = false;
+        }
 
-        if (cost && name && num && res) {
-            let videoDevice = new VideoDevice(cost, name, num, stat, res, dev);
+        if (cost && name && num && size && transferRate && isSmthChecked) {
+            // creating new object 
+            let ssd = new SsdDisk(cost, name, num, stat, size, transferRate, ssdSize, wearLeveling);
+            // pushing to aVideoDevice array
+            aSsdDisk.push(ssd);
 
-            aVideoDevice.push(videoDevice);
-
-            var inputs = document.querySelectorAll("div#videoDevice input");
-
+            // query selector to clear all inputs in div#videoDevice exept .st
+            var inputs = document.querySelectorAll("div#ssd input:not(.st)");
             for (let index = 0; index < inputs.length; index++) {
                 const element = inputs[index];
                 element.value = "";
             }
-            vidDiv.classList.remove("border-light")
-            vidDiv.classList.add("border-success");
-            document.getElementById("badge1").innerHTML = "";
-        } else {
-            vidDiv.classList.remove("border-light")
-            vidDiv.classList.add("border-danger");
-            document.getElementById("badge1").innerHTML = "";
+            ssdDiv.classList.remove("border-light");
+            ssdDiv.classList.remove("border-danger");
+            ssdDiv.classList.add("border-success");
+            document.getElementById("badge3").innerHTML = "";
+
+        } else { // in case some of inputs are empty changes colors of border to red
+            ssdDiv.classList.remove("border-light");
+            ssdDiv.classList.remove("border-success");
+            ssdDiv.classList.add("border-danger");
+            document.getElementById("badge3").innerHTML = "";
         }
 
 
@@ -365,10 +627,34 @@
         }
     }
 
+    function btnNext2() {
+        if(counterHardDisc < aHardDisk.length -1) {
+            counterHardDisc++;
+            print2();
+            let hardDiv = document.getElementById("hardDisk");
+            hardDiv.classList.remove("border-danger");
+            hardDiv.classList.remove("border-success");
+            hardDiv.classList.add("border-light")
+        }
+    }
+
+    function btnNext3() {
+        if(counterSsd < aSsdDisk.length -1) {
+            counterSsd++;
+            print3();
+            let ssdDiv = document.getElementById("ssd");
+            ssdDiv.classList.remove("border-danger");
+            ssdDiv.classList.remove("border-success");
+            ssdDiv.classList.add("border-light")
+        }
+    }
+
     // previous buttons 
 
     function previousBtn() {
-        if(counterVideoDevice == 0) {
+        if (aVideoDevice.length == 0) {
+            alert("No video devices");
+        } else if(counterVideoDevice == 0) {
             print1();
             let vidDiv = document.getElementById("videoDevice");
             vidDiv.classList.remove("border-danger");
@@ -384,15 +670,59 @@
         }
     }
 
+    function previousBtn2() {
+        if (aHardDisk.length == 0) {
+            alert("No hard disc");
+        } else if(counterHardDisc == 0) {
+            print2();
+            let hardDiv = document.getElementById("hardDisk");
+            hardDiv.classList.remove("border-danger");
+            hardDiv.classList.remove("border-success");
+            hardDiv.classList.add("border-light")
+        } else if (counterHardDisc > 0) {
+            counterHardDisc--;
+            print2();
+            let hardDiv = document.getElementById("hardDisk");
+            hardDiv.classList.remove("border-danger");
+            hardDiv.classList.remove("border-success");
+            hardDiv.classList.add("border-light")
+        }
+    }
+
+    function previousBtn3() {
+        if (aSsdDisk.length == 0) {
+            alert("No ssd");
+        } else if(counterSsd == 0) {
+            print3();
+            let ssdDiv = document.getElementById("ssd");
+            ssdDiv.classList.remove("border-danger");
+            ssdDiv.classList.remove("border-success");
+            ssdDiv.classList.add("border-light")
+        } else if (counterSsd > 0) {
+            counterSsd--;
+            print3();
+            let ssdDiv = document.getElementById("ssd");
+            ssdDiv.classList.remove("border-danger");
+            ssdDiv.classList.remove("border-success");
+            ssdDiv.classList.add("border-light")
+        }
+    }
+
     //update buttons 
 
     function update1() {
+        // declaring DOM to less coding
         let vidDiv = document.getElementById("videoDevice");
         let cost = document.getElementById("replacementCost1").value;
         let name = document.getElementById("name1").value;
         let num = document.getElementById("serialNumber1").value;
-        let stat = document.querySelector("input[name=status]:checked").value
-        if (stat == "enabled") {
+        let stat = document.getElementsByName("status");
+        let isSmthChecked = false;
+        if (stat[0].checked || stat[1].checked) {
+            isSmthChecked = true;
+        } 
+        // // checkbox
+        if (stat[0].checked == true) {
             stat = true;
         } else {
             stat = false;
@@ -400,39 +730,153 @@
         let res = document.getElementById("resolution1").value;
         let dev = document.getElementById("res1").value;
 
-        if (cost && name && num && res) {
-
+        if (aVideoDevice.length == 0) {
+            alert("Nothing to update");
+        } else if (cost && name && num && res && isSmthChecked) {
+            // changing values in object 
             var el = aVideoDevice[counterVideoDevice];
             el.replacementCost = cost;
             el.supplierName = name;
             el.serialNumber = num;
             el.resolution = res;
             el.deviceType = dev;
-            if (stat == "enabled") {
-                el.status = true;
-            } else {
-                el.status = false;
-            }
+            el.status = stat;
             
-            var inputs = document.querySelectorAll("div#videoDevice input");
-
+            // query selector to clear all inputs in div#videoDevice 
+            var inputs = document.querySelectorAll("div#videoDevice input:not(.st)");
             for (let index = 0; index < inputs.length; index++) {
                 const element = inputs[index];
                 element.value = "";
             }
-            vidDiv.classList.remove("border-light")
+            vidDiv.classList.remove("border-light");
+            vidDiv.classList.remove("border-danger");
             vidDiv.classList.add("border-success");
             document.getElementById("badge1").innerHTML = "";
-        } else {
-            vidDiv.classList.remove("border-light")
+
+        } else { // in case some of inputs are empty changes colors of border to red
+            vidDiv.classList.remove("border-light");
+            vidDiv.classList.remove("border-success");
             vidDiv.classList.add("border-danger");
             document.getElementById("badge1").innerHTML = "";
         }
-
-
     }
 
+    function update2() {
 
+        let hardDiv = document.getElementById("hardDisk");
+        let cost = document.getElementById("replacementCost2").value;
+        let name = document.getElementById("name2").value;
+        let num = document.getElementById("serialNumber2").value;
+        let stat = document.getElementsByName("status2");
+        let isSmthChecked = false;
+        if (stat[0].checked || stat[1].checked) {
+            isSmthChecked = true;
+        } 
+        // // checkbox
+        if (stat[0].checked == true) {
+            stat = true;
+        } else {
+            stat = false;
+        }
+        let size = document.getElementById("size").value;
+        let transferRate = document.getElementById("rate").value;
+        let platterSize = document.getElementById("platterSize").value;
+        let numOfPlatters = document.getElementById("numOfPlatters").value;
+
+        if (aHardDisk.length == 0){
+            alert("Nothing to update");
+        } else if (cost && name && num && size && transferRate && platterSize && numOfPlatters && isSmthChecked) {
+            // creating new object 
+            var el = aHardDisk[counterHardDisc];
+            el.replacementCost = cost;
+            el.supplierName = name;
+            el.serialNumber = num;
+            el.size = size;
+            el.transferRate = transferRate;
+            el.platterSize = platterSize;
+            el.numOfPlatters = numOfPlatters;
+            el.status = stat;
+
+            // query selector to clear all inputs in div#videoDevice 
+            var inputs = document.querySelectorAll("div#hardDisk input:not(.st)");
+            for (let index = 0; index < inputs.length; index++) {
+                const element = inputs[index];
+                element.value = "";
+            }
+            hardDiv.classList.remove("border-light");
+            hardDiv.classList.remove("border-danger");
+            hardDiv.classList.add("border-success");
+            document.getElementById("badge2").innerHTML = "";
+
+        } else { // in case some of inputs are empty changes colors of border to red
+            hardDiv.classList.remove("border-light");
+            hardDiv.classList.remove("border-success");
+            hardDiv.classList.add("border-danger");
+            document.getElementById("badge2").innerHTML = "";
+        }
+
+        
+    }
+
+    function update3() {
+        // declaring DOM to less coding
+        let ssdDiv = document.getElementById("ssd");
+        let cost = document.getElementById("replacementCost3").value;
+        let name = document.getElementById("name3").value;
+        let num = document.getElementById("serialNumber3").value;
+        let stat = document.getElementsByName("status3");
+        let isSmthChecked = false;
+        if (stat[0].checked || stat[1].checked) {
+            isSmthChecked = true;
+        } 
+        // // checkbox
+        if (stat[0].checked == true) {
+            stat = true;
+        } else {
+            stat = false;
+        }
+        let size = document.getElementById("size3").value;
+        let transferRate = document.getElementById("rate3").value;
+        let ssdSize = document.getElementById("ssdSize").value;
+        let wearLeveling = document.getElementsByName("wl3");
+        if (wearLeveling[0].checked) {
+            wearLeveling = true;
+        } else {
+            wearLeveling = false;
+        }
+
+        if (cost && name && num && size && transferRate && isSmthChecked) {
+
+            var el = aSsdDisk[counterSsd];
+            el.replacementCost = cost;
+            el.supplierName = name;
+            el.serialNumber = num;
+            el.size = size;
+            el.transferRate = transferRate;
+            el.status = stat;
+            el.ssdSize = ssdSize;
+            el.wearLeveling = wearLeveling;
+
+
+            // query selector to clear all inputs in div#videoDevice exept .st
+            var inputs = document.querySelectorAll("div#ssd input:not(.st)");
+            for (let index = 0; index < inputs.length; index++) {
+                const element = inputs[index];
+                element.value = "";
+            }
+            ssdDiv.classList.remove("border-light");
+            ssdDiv.classList.remove("border-danger");
+            ssdDiv.classList.add("border-success");
+            document.getElementById("badge3").innerHTML = "";
+
+        } else { // in case some of inputs are empty changes colors of border to red
+            ssdDiv.classList.remove("border-light");
+            ssdDiv.classList.remove("border-success");
+            ssdDiv.classList.add("border-danger");
+            document.getElementById("badge3").innerHTML = "";
+        }
+
+    }
 
 
 </script>
